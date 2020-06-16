@@ -29,29 +29,19 @@ module.exports = (configDirs) => {
           },
         },
         //  All Type os CSS loaders.
-        {
-          test: /\.css$/,
-          use: [
-            {
-              loader: "style-loader",
-            },
-            {
-              loader: "css-loader",
-            },
-          ],
-        },
+
         {
           test: /\.s[ac]ss$/i,
           use: [
+            { loader: "style-loader" },
             // Only In Prod
-            MiniCssExtractPlugin.loader,
-            // { loader: "style-loader" },
+            // MiniCssExtractPlugin.loader,
             // css-loader
             {
               loader: "css-loader",
               options: {
                 modules: {
-                  localIdentName: "[name]__[local]___[hash:base64:5]",
+                  localIdentName: "[local]",
                 },
                 sourceMap: true,
                 // onlyLocals: true,
@@ -90,9 +80,9 @@ module.exports = (configDirs) => {
     plugins: [
       new CleanWebpackPlugin(),
       // Only in Prod
-      new MiniCssExtractPlugin({
-        filename: "styles.css",
-      }),
+      // new MiniCssExtractPlugin({
+      //   filename: "styles.css",
+      // }),
       new HtmlWebpackPlugin({
         template: configDirs.APP_DIR + "/index.html",
       }),

@@ -11,6 +11,8 @@ module.exports = (configDirs) =>
       // Display Errors on the screen
       overlay: true,
 
-      contentBase: "dist",
+      contentBase: "/src",
+
+      historyApiFallback: true,
     },
   });
