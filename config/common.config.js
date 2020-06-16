@@ -37,6 +37,13 @@ module.exports = (configDirs) => {
             },
             {
               loader: "css-loader",
+              options: {
+                modules: {
+                  localIdentName: "[local]",
+                },
+                sourceMap: true,
+                // onlyLocals: true,
+              },
             },
           ],
         },
@@ -44,14 +51,14 @@ module.exports = (configDirs) => {
           test: /\.s[ac]ss$/i,
           use: [
             // Only In Prod
-            MiniCssExtractPlugin.loader,
-            // { loader: "style-loader" },
+            // MiniCssExtractPlugin.loader,
+            { loader: "style-loader" },
             // css-loader
             {
               loader: "css-loader",
               options: {
                 modules: {
-                  localIdentName: "[name]__[local]___[hash:base64:5]",
+                  localIdentName: "[local]",
                 },
                 sourceMap: true,
                 // onlyLocals: true,
@@ -71,7 +78,7 @@ module.exports = (configDirs) => {
             {
               loader: "file-loader",
               options: {
-                name: "images/[name].[ext]",
+                esModule: false,
               },
             },
           ],
@@ -79,7 +86,15 @@ module.exports = (configDirs) => {
         // Fonts Loaders.
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
-          use: ["file-loader"],
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: "[name].[ext]",
+                outputPath: "fonts/",
+              },
+            },
+          ],
         },
         {
           test: /\.svg$/,
@@ -90,9 +105,9 @@ module.exports = (configDirs) => {
     plugins: [
       new CleanWebpackPlugin(),
       // Only in Prod
-      new MiniCssExtractPlugin({
-        filename: "styles.css",
-      }),
+      // new MiniCssExtractPlugin({
+      //   filename: "styles.css",
+      // }),
       new HtmlWebpackPlugin({
         template: configDirs.APP_DIR + "/index.html",
       }),

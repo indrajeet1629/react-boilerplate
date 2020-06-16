@@ -24,10 +24,6 @@ import { Container, Row, Col } from "reactstrap";
 import AuthNavbar from "../components/Navbars/AuthNavbar.js";
 import AuthFooter from "../components/Footers/AuthFooter.js";
 
-import "../assets/plugins/nucleo/css/nucleo.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../assets/scss/argon-dashboard-react.scss";
-
 import routes from "../routes.js";
 
 class Auth extends React.Component {
