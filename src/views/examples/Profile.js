@@ -15,6 +15,57 @@ import {
 } from "reactstrap";
 // core components
 import UserHeader from "../../components/Headers/UserHeader.js";
+import Wizard from "../../components/WizardForm/Wizard";
+
+class FirstStep extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstStep: "first step here",
+    };
+  }
+  render() {
+    return <div>Hey from First</div>;
+  }
+}
+class SecondStep extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      secondStep: "second step here",
+    };
+  }
+  isValidated() {
+    // do some validations
+    // decide if you will
+    return true;
+    // or you will
+    // return false;
+  }
+  render() {
+    return <div>Hey from Second</div>;
+  }
+}
+class ThirdStep extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      thirdStep: "third step here",
+    };
+  }
+  render() {
+    return <div>Hey from Third</div>;
+  }
+}
+
+var steps = [
+  // this step hasn't got a isValidated() function, so it will be considered to be true
+  { stepName: "First", component: FirstStep },
+  // this step will be validated to false
+  { stepName: "Second", component: SecondStep },
+  // this step will never be reachable because of the seconds isValidated() steps function that will always return false
+  { stepName: "Third", component: ThirdStep },
+];
 
 class Profile extends React.Component {
   render() {
@@ -28,15 +79,7 @@ class Profile extends React.Component {
               <Card className="card-profile shadow">
                 <Row className="justify-content-center">
                   <Col className="order-lg-2" lg="3">
-                    <div className="card-profile-image">
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        <img
-                          alt="..."
-                          className="rounded-circle"
-                          src={require("../../assets/img/theme/team-4-800x800.jpg")}
-                        />
-                      </a>
-                    </div>
+                    <Col xs={12} md={6} className="mr-auto ml-auto"></Col>
                   </Col>
                 </Row>
                 <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
@@ -136,39 +179,16 @@ class Profile extends React.Component {
                     </h6>
                     <div className="pl-lg-4">
                       <Row>
-                        <Col lg="6">
-                          <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-username"
-                            >
-                              Username
-                            </label>
-                            <Input
-                              className="form-control-alternative"
-                              defaultValue="lucky.jesse"
-                              id="input-username"
-                              placeholder="Username"
-                              type="text"
-                            />
-                          </FormGroup>
-                        </Col>
-                        <Col lg="6">
-                          <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-email"
-                            >
-                              Email address
-                            </label>
-                            <Input
-                              className="form-control-alternative"
-                              id="input-email"
-                              placeholder="jesse@example.com"
-                              type="email"
-                            />
-                          </FormGroup>
-                        </Col>
+                        <Wizard
+                          steps={steps}
+                          navSteps
+                          title="react-wizard"
+                          description="This will help you split a complicated flow or a complicated form in multiple steps."
+                          headerTextCenter
+                          validate
+                          color="primary"
+                          // finishButtonClick={this.finishButtonClick}
+                        />
                       </Row>
                       <Row>
                         <Col lg="6">
