@@ -6,13 +6,19 @@
   "scripts": {
     "start": "webpack-dev-server -d --env=dev",
     "build": "webpack -p --env=prod",
-    "build:dev": "webpack -d --env=dev"
+    "build:dev": "webpack -d --env=dev",
+    "dev:build-server": "NODE_ENV=development webpack-dev-server --config webpack.server.js -d -w",
+    "dev:start": "nodemon server/index.js",
+    "dev": "npm-run-all --parallel build dev:*"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/register": "^7.11.5",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "classnames": "^2.2.6",
+    "express": "^4.17.1",
+    "ignore-styles": "^5.0.1",
     "nouislider": "^14.5.0",
     "plotly.js": "^1.54.5",
     "react": "^16.13.1",
@@ -32,12 +38,16 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-react-app": "^9.1.2",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
     "redux-logger": "^3.0.6",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
@@ -46,6 +56,7 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }

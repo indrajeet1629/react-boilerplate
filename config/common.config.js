@@ -24,9 +24,12 @@ module.exports = (configDirs) => {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-          },
+          use: [
+            { loader: "ify-loader" },
+            {
+              loader: "babel-loader",
+            },
+          ],
         },
         //  All Type os CSS loaders.
         {

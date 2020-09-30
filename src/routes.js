@@ -5,7 +5,7 @@ import Register from "./views/examples/Register.js";
 import Login from "./views/examples/Login.js";
 // import Tables from "./views/examples/Tables.js";
 // import Icons from "./views/examples/Icons.js";
-import Graph from "./views/examples/Graph";
+// import Graph from "./views/examples/Graph";
 
 var routes = [
   // {
@@ -36,13 +36,13 @@ var routes = [
     component: Profile,
     layout: "/admin",
   },
-  {
-    path: "/user-graph",
-    name: "User Graph",
-    icon: "ni ni-single-02 text-yellow",
-    component: Graph,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/user-graph",
+  //   name: "User Graph",
+  //   icon: "ni ni-single-02 text-yellow",
+  //   component: Graph,
+  //   layout: "/admin",
+  // },
   // {
   //   path: "/tables",
   //   name: "Tables",
