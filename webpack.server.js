@@ -2,18 +2,18 @@ const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
-  entry: ["babel-polyfill", path.resolve(__dirname, "./server") + "/index.js"],
+    entry: ["babel-polyfill", path.resolve(__dirname, "./server") + "/index.js"],
 
-  target: "node",
+    target: "node",
 
-  externals: [nodeExternals()],
+    externals: [nodeExternals()],
 
-  output: {
-    path: path.resolve("server-build"),
-    filename: "index.js",
-  },
+    output: {
+        path: path.resolve("server-build"),
+        filename: "index.js",
+    },
 
-  module: {
+    module: {
         rules: [
             {
                 //tell webpack to use jsx-loader for all *.jsx files
@@ -28,10 +28,10 @@ module.exports = {
             {
                 test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
                 use: [
-                  {
-                    loader: 'file-loader',
-                    options: {}
-                  }
+                    {
+                        loader: 'file-loader',
+                        options: {}
+                    }
                 ]
             },
             {
@@ -44,11 +44,11 @@ module.exports = {
             }
         ]
     },
-  resolve:{
-    modules: [
-        path.resolve("./src"),
-        path.resolve("./node_modules"),
-    ],
-    extensions: [".js",".jsx"]
-  }
+    resolve: {
+        modules: [
+            path.resolve("./src"),
+            path.resolve("./node_modules"),
+        ],
+        extensions: [".js", ".jsx"]
+    }
 };
