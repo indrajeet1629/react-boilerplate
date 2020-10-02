@@ -12,7 +12,7 @@ import "./assets/scss/argon-dashboard-react.scss";
 
 import AdminLayout from "./layouts/Admin.js";
 import AuthLayout from "./layouts/Auth";
-import { createMemoryHistory } from 'history';
+import { createMemoryHistory } from "history";
 
 const history = createMemoryHistory();
 
@@ -21,13 +21,13 @@ function App() {
   const { store } = storeObject;
   return (
     <Provider store={store}>
-      <Router history={history}>
-        <Switch>
-          <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-          <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
-          <Redirect from="/" to="/auth/login" />
-        </Switch>
-      </Router>
+      {/* <Router history={history}> */}
+      <Switch>
+        <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+        <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
+        <Redirect from="/" to="/auth/login" />
+      </Switch>
+      {/* </Router> */}
     </Provider>
   );
 }

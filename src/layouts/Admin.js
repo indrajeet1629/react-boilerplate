@@ -27,6 +27,9 @@ import Sidebar from "../components/Sidebar/Sidebar.js";
 import routes from "../routes.js";
 
 class Admin extends React.Component {
+  componentDidMount() {
+    console.log("componeteDidMountSSSRRRRRRRR");
+  }
   componentDidUpdate(e) {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
